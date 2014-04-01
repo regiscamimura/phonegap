@@ -1,25 +1,25 @@
 var LocalStorageStore = function(successCallback, errorCallback) {
 
     this.findByName = function(searchKey, callback) {
-        var employees = JSON.parse(window.localStorage.getItem("employees"));
-        var results = employees.filter(function(element) {
-            var fullName = element.firstName + " " + element.lastName;
+        var products = JSON.parse(window.localStorage.getItem("products"));
+        var results = products.filter(function(element) {
+            var fullName = element.name;
             return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
         });
         callLater(callback, results);
     }
 
     this.findById = function(id, callback) {
-        var employees = JSON.parse(window.localStorage.getItem("employees"));
-        var employee = null;
-        var l = employees.length;
+        var products = JSON.parse(window.localStorage.getItem("products"));
+        var product = null;
+        var l = products.length;
         for (var i=0; i < l; i++) {
-            if (employees[i].id === id) {
-                employee = employees[i];
+            if (products[i].id === id) {
+                product = products[i];
                 break;
             }
         }
-        callLater(callback, employee);
+        callLater(callback, product);
     }
 
     // Used to simulate async calls. This is done to provide a consistent interface with stores (like WebSqlStore)
@@ -32,25 +32,15 @@ var LocalStorageStore = function(successCallback, errorCallback) {
         }
     }
 
-    var employees = [
-            {"id": 1, "firstName": "Ryan", "lastName": "Howard", "title":"Vice President, North East", "managerId": 0, "city":"New York, NY", "cellPhone":"212-999-8888", "officePhone":"212-999-8887", "email":"ryan@dundermifflin.com"},
-            {"id": 2, "firstName": "Michael", "lastName": "Scott", "title":"Regional Manager", "managerId": 1, "city":"Scranton, PA", "cellPhone":"570-865-2536", "officePhone":"570-123-4567", "email":"michael@dundermifflin.com"},
-            {"id": 3, "firstName": "Dwight", "lastName": "Schrute", "title":"Assistant Regional Manager", "managerId": 2, "city":"Scranton, PA", "cellPhone":"570-865-1158", "officePhone":"570-843-8963", "email":"dwight@dundermifflin.com"},
-            {"id": 4, "firstName": "Jim", "lastName": "Halpert", "title":"Assistant Regional Manager", "managerId": 2, "city":"Scranton, PA", "cellPhone":"570-865-8989", "officePhone":"570-968-5741", "email":"dwight@dundermifflin.com"},
-            {"id": 5, "firstName": "Pamela", "lastName": "Beesly", "title":"Receptionist", "managerId": 2, "city":"Scranton, PA", "cellPhone":"570-999-5555", "officePhone":"570-999-7474", "email":"pam@dundermifflin.com"},
-            {"id": 6, "firstName": "Angela", "lastName": "Martin", "title":"Senior Accountant", "managerId": 2, "city":"Scranton, PA", "cellPhone":"570-555-9696", "officePhone":"570-999-3232", "email":"angela@dundermifflin.com"},
-            {"id": 7, "firstName": "Kevin", "lastName": "Malone", "title":"Accountant", "managerId": 6, "city":"Scranton, PA", "cellPhone":"570-777-9696", "officePhone":"570-111-2525", "email":"kmalone@dundermifflin.com"},
-            {"id": 8, "firstName": "Oscar", "lastName": "Martinez", "title":"Accountant", "managerId": 6, "city":"Scranton, PA", "cellPhone":"570-321-9999", "officePhone":"570-585-3333", "email":"oscar@dundermifflin.com"},
-            {"id": 9, "firstName": "Creed", "lastName": "Bratton", "title":"Quality Assurance", "managerId": 2, "city":"Scranton, PA", "cellPhone":"570-222-6666", "officePhone":"570-333-8585", "email":"creed@dundermifflin.com"},
-            {"id": 10, "firstName": "Andy", "lastName": "Bernard", "title":"Sales Director", "managerId": 4, "city":"Scranton, PA", "cellPhone":"570-555-0000", "officePhone":"570-646-9999", "email":"andy@dundermifflin.com"},
-            {"id": 11, "firstName": "Phyllis", "lastName": "Lapin", "title":"Sales Representative", "managerId": 10, "city":"Scranton, PA", "cellPhone":"570-241-8585", "officePhone":"570-632-1919", "email":"phyllis@dundermifflin.com"},
-            {"id": 12, "firstName": "Stanley", "lastName": "Hudson", "title":"Sales Representative", "managerId": 10, "city":"Scranton, PA", "cellPhone":"570-700-6464", "officePhone":"570-787-9393", "email":"shudson@dundermifflin.com"},
-            {"id": 13, "firstName": "Meredith", "lastName": "Palmer", "title":"Supplier Relations", "managerId": 2, "city":"Scranton, PA", "cellPhone":"570-588-6567", "officePhone":"570-981-6167", "email":"meredith@dundermifflin.com"},
-            {"id": 14, "firstName": "Kelly", "lastName": "Kapoor", "title":"Customer Service Rep.", "managerId": 2, "city":"Scranton, PA", "cellPhone":"570-123-9654", "officePhone":"570-125-3666", "email":"kelly@dundermifflin.com"},
-            {"id": 15, "firstName": "Toby", "lastName": "Flenderson", "title":"Human Resources", "managerId": 1, "city":"Scranton, PA", "cellPhone":"570-485-8554", "officePhone":"570-699-5577", "email":"toby@dundermifflin.com"}
+    var products = [
+            {"id": 1, "name": "Samsung Galaxy Tab 3 Lite (7-Inch, White)", "brand": "Samsung", "os": "Android 4.1 Jelly Bean", "features": "8 GB Flash Memory, 1 GB RAM Memory", "camera": "2MP rear-facing", "image": "Samsung-Galaxy-Tab-3.jpg", "call": "(888) 340-4647"},
+			{"id": 2, "name": "Acer Iconia A3-A10-L879 10.1-Inch Tablet (White)", "brand": "Acer", "os": "Android 4.2 Jelly Bean", "features": "32 GB Flash Memory, 1 GB RAM Memory", "camera": "0.3MP Front Facing Camera, 5MP Rear Facing Camera", "image": "Acer-Iconia.jpg", "call": "(888) 340-4647"},
+			{"id": 3, "name": "Kindle Fire 7\" Tablet", "brand": "Kindle", "os": "Fire OS 3.0", "features": "16 GB Flash Memory, 1 GB RAM Memory", "camera": "Front-facing HD camera", "image": "kindle-fire.jpg", "call": "(888) 340-4647"},
+			{"id": 4, "name": "Samsung Galaxy Note Pro 12.2", "brand": "Samsung", "os": "Android 4.4 Kit Kat OS", "features": "32 GB Flash Memory, 3 GB RAM", "camera": "Rear (8MP) and front (2MP)", "image": "Samsung-Galaxy-NotePro.jpg", "call": "(888) 340-4647"},
+          
         ];
 
-    window.localStorage.setItem("employees", JSON.stringify(employees));
+    window.localStorage.setItem("products", JSON.stringify(products));
 
     callLater(successCallback);
 

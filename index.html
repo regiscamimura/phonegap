@@ -1,20 +1,55 @@
 <html>
 <head>
-	<script src="css/source-sans-pro.js"></script>
 	<link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
 
 <script id="home-tpl" type="text/x-handlebars-template">
-    <div class='header'><h1>Home</h1></div>
-    <div class='search-bar'><input class='search-key' type="text"/></div>
-    <div class='scroll'><ul class='employee-list'></ul></div>
+    <div class='header'><h1>Advosoft - Sample app</h1></div>
+    <div class='search-bar'>
+		<div>Start typing to search. Then click an item. Note the sliding page effect.</div>
+		<input class='search-key' type="search"/>
+	</div>
+    <div class='scroll'><ul class='product-list'></ul></div>
 </script>
 
-<script id="employee-li-tpl" type="text/x-handlebars-template">
+<script id="product-li-tpl" type="text/x-handlebars-template">
     {{#.}}
-    <li><a href="#employees/{{this.id}}">{{this.firstName}} {{this.lastName}}<br/>{{this.title}}</a></li>
+    <li><a href="#products/{{this.id}}"><div class="product-image"><img src="img/{{this.image}}" /></div> <div class="product-name">{{this.name}}</div></a></li>
     {{/.}}
+</script>
+
+<script id="product-tpl" type="text/x-handlebars-template">
+    <div class='header'><a href='#' class="button header-button header-button-left">Back</a><h1>Details</h1></div>
+    <div class='details'>
+        <img class='product-image' src='img/{{image}}' />
+        <h1>{{name}}</h1>
+        <h2>{{brand}}</h2>
+		<p>OS: {{os}}</p>
+		<p>{{features}}</p>
+		<p>Camera: {{camera}}</p>
+		
+		<br/>
+		
+		<p>
+			Compare with my camera:  <input type="button" class="button change-pic-btn" value="Get a shot from my camera">
+		</p>
+		
+		<p>
+			Call to request: {{call}}
+			<input type="button" class="button add-contact-btn" value="Add to contact">
+		
+		</p>
+		
+		<p>
+			Ship to my Location:  <span class="location"></span> <input type="button" class="button add-location-btn" value="Get my position">
+		</p>
+		
+		
+		
+        
+    </div>
+	
 </script>
 
 <script src="phonegap.js"></script>
@@ -22,7 +57,9 @@
 <script src="lib/handlebars.js"></script>
 <script src="lib/jquery-1.8.2.min.js"></script>
 <script src="js/storage/ls-store.js"></script>
+<script src="lib/iscroll.js"></script>
 <script src="js/HomeView.js"></script>
+<script src="js/ProductView.js"></script>
 
 
 <script src="js/main.js"></script>
