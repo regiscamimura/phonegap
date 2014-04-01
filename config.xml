@@ -5,7 +5,7 @@
         versionCode = "10"
         version     = "1.1.0">
  
-    <name>Advosoft - Sample App</name>
+    <name>Advosoft | Sample App</name>
  
     <description>
         A sample app with phonegap.
@@ -14,6 +14,8 @@
     <author href="http://advosoft.com" email="larry.dennison@advosoft.com">
         Larry C. Dennison
     </author>
+	
+	 <icon src="icon.png" />
  
     <feature name="http://api.phonegap.com/1.0/camera"/>
     <feature name="http://api.phonegap.com/1.0/contacts"/>
