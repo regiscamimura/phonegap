@@ -1,6 +1,11 @@
 <html>
 <head>
 	<link href="css/styles.css" rel="stylesheet">
+	
+	
+	<link href="https://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="js/googlemaps.js"></script>
 </head>
 <body>
 
@@ -47,6 +52,9 @@
 			Ship to my Location:  <span class="location"></span> <input type="button" class="button add-location-btn" value="Get my position">
 		</p>
 		
+		<p><input type="button" class="button store-location-btn" value="Store Locations"></p>
+		<div id="map_state"></div>
+		<div id="map_canvas" style='width: 100%; height: 300px; background: #cccccc'></div>
 		
 		
         
@@ -55,6 +63,7 @@
 </script>
 
 <script src="phonegap.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing&sensor=true&key=AIzaSyDxlB_YIqF3q5I4_r7jigNVt2bXpRZqQjY"></script>
 
 <script src="lib/handlebars.js"></script>
 <script src="lib/jquery-1.8.2.min.js"></script>
@@ -65,6 +74,7 @@
 
 
 <script src="js/main.js"></script>
+
 
 
 </body>
